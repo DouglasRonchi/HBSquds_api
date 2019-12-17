@@ -9,16 +9,17 @@ class FrameControllers(Resource):
 
     def get(self, id=None):
         if (id):
-            return self.dao_frame.buscar_por_id(id)
+            return self.dao_frame.buscar_por_id(id).__dict__
         else:
-            return self.dao_frame.listar()
+            return self.dao_frame.listar().__dict__
     
     def post(self):
         _json = request.json
         nome = _json['nome']
         frame = Framework(nome)
         id_post = self.dao_frame.inserir(frame)
-        return f'Framework (id:{id_post}) adicionado com sucesso'
+        return self.dao_frame.buscar_por_id(id_post).__dict__
+        # return f'Framework (id:{id_post}) adicionado com sucesso'
 
     def delete(self, id):
         self.dao_frame.deletar(id)

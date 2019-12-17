@@ -1,6 +1,6 @@
 from dao.verificacao_dao import Verificacao
 
-# nicole_lista = ['mysqlserver', 'react' , 'php']
+# nicole_lista = ['mysqlserver', 'react', 'php']
 # mateus_lista = ['mongo', 'angular', 'python']
 # tiago_lista = ['postgresql', 'vue', 'java']
 

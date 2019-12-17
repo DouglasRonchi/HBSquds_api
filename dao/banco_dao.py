@@ -16,9 +16,10 @@ class BancoDao(BaseDao):
         lista_squad = []
         comando_sql_listar = """SELECT nome, id FROM banco"""
 
-        l = super().listar(comando_sql_listar)
-        squad = BD(l[0], l[1])
-        lista_squad.append(squad.__dict__)
+        lista_banco = super().listar(comando_sql_listar)
+        for l in lista_banco:
+            squad = BD(l[0], l[1])
+            lista_squad.append(squad.__dict__)
         return lista_squad
 
     def buscar_por_id(self, id):
@@ -29,5 +30,5 @@ class BancoDao(BaseDao):
                                 WHERE id = {id}"""
 
         l = super().buscar_por_id(comando_sql_buscar_id)
-        squad = BD(l[0], l[1])   
+        squad = BD(l[0], l[1])
         return squad

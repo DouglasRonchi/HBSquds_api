@@ -16,9 +16,10 @@ class LingDao(BaseDao):
         lista_squad = []
         comando_sql_listar = """SELECT nome, id FROM linguagens"""
 
-        l = super().listar(comando_sql_listar)
-        squad = Linguagem(l[0], l[1])
-        lista_squad.append(squad.__dict__)
+        lista_ling = super().listar(comando_sql_listar)
+        for l in lista_ling:
+            squad = Linguagem(l[0], l[1])
+            lista_squad.append(squad.__dict__)
         return lista_squad
 
     def buscar_por_id(self, id):
@@ -29,5 +30,5 @@ class LingDao(BaseDao):
                                 WHERE id = {id}"""
 
         l = super().buscar_por_id(comando_sql_buscar_id)
-        squad = Linguagem(l[0], l[1])   
+        squad = Linguagem(l[0], l[1])
         return squad
